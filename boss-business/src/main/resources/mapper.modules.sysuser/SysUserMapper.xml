@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fdh.business.modules.per.dao.SysUserDao">
+    <!--表名-->
+    <sql id="table_name">sys_user</sql>
+
+    <!--插入字段集合-->
+    <sql id="Base_Column_List">
+        id,
+        username,
+        real_name,
+        sex,
+        email,
+        password,
+        phone,
+        photo,
+        salt,
+        is_admin,
+        status,
+        login_ip,
+        login_date,
+        is_valid,
+        create_date,
+        create_user,
+        update_date,
+        update_user,
+        remark
+    </sql>
+    <!--查询字段集合-->
+    <sql id="Base_Column_List_AsType">
+        id as id,
+        username as username,
+        real_name as realName,
+        sex as sex,
+        email as email,
+        password as password,
+        phone as phone,
+        photo as photo,
+        salt as salt,
+        is_admin as isAdmin,
+        status as status,
+        login_ip as loginIp,
+        login_date as loginDate,
+        is_valid as isValid,
+        create_date as createDate,
+        create_user as createUser,
+        update_date as updateDate,
+        update_user as updateUser,
+        remark as remark
+    </sql>
+
+    <!-- 增加一个实体 -->
+    <insert id="insert" parameterType="com.fdh.business.modules.per.entity.SysUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+        insert into <include refid="table_name" />
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="photo != null">
+                photo,
+            </if>
+            <if test="salt != null">
+                salt,
+            </if>
+            <if test="isAdmin != null">
+                is_admin,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="loginIp != null">
+                login_ip,
+            </if>
+            <if test="loginDate != null">
+                login_date,
+            </if>
+            <if test="isValid != null">
+                is_valid,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="createUser != null">
+                create_user,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="updateUser != null">
+                update_user,
+            </if>
+            <if test="remark != null">
+                remark
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username},
+            </if>
+            <if test="realName != null">
+                #{realName},
+            </if>
+            <if test="sex != null">
+                #{sex},
+            </if>
+            <if test="email != null">
+                #{email},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="phone != null">
+                #{phone},
+            </if>
+            <if test="photo != null">
+                #{photo},
+            </if>
+            <if test="salt != null">
+                #{salt},
+            </if>
+            <if test="isAdmin != null">
+                #{isAdmin},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="loginIp != null">
+                #{loginIp},
+            </if>
+            <if test="loginDate != null">
+                #{loginDate},
+            </if>
+            <if test="isValid != null">
+                #{isValid},
+            </if>
+            <if test="createDate != null">
+                #{createDate},
+            </if>
+            <if test="createUser != null">
+                #{createUser},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate},
+            </if>
+            <if test="updateUser != null">
+                #{updateUser},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 根据主键删除一个实体 -->
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from <include refid="table_name" />
+        where id = #{id}
+    </delete>
+
+    <!-- 更新一个实体 -->
+    <update id="update" parameterType="com.fdh.business.modules.per.entity.SysUser">
+        update <include refid="table_name" />
+        set
+        <trim suffixOverrides=",">
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="realName != null">
+                real_name = #{realName},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="photo != null">
+                photo = #{photo},
+            </if>
+            <if test="salt != null">
+                salt = #{salt},
+            </if>
+            <if test="isAdmin != null">
+                is_admin = #{isAdmin},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="loginIp != null">
+                login_ip = #{loginIp},
+            </if>
+            <if test="loginDate != null">
+                login_date = #{loginDate},
+            </if>
+            <if test="isValid != null">
+                is_valid = #{isValid},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate},
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate},
+            </if>
+            <if test="updateUser != null">
+                update_user = #{updateUser},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <!-- 根据主键查询一个实体 -->
+    <select id="queryOne" parameterType="java.lang.Long"  resultType="com.fdh.business.modules.per.entity.SysUser">
+        select
+        <include refid="Base_Column_List_AsType" />
+        from <include refid="table_name" />
+        where id = #{id}
+    </select>
+
+    <!-- 查询全部 -->
+    <select id="queryAll" resultType="com.fdh.business.modules.per.entity.SysUser">
+        select
+        <include refid="Base_Column_List_AsType" />
+        from <include refid="table_name" />
+        where is_valid = '1'
+    </select>
+
+    <!-- 根据字段查询 带分页 -->
+    <select id="queryByFieldsAndPage" resultType="com.fdh.business.modules.per.entity.SysUser">
+        select
+        <include refid="Base_Column_List_AsType" />
+        from <include refid="table_name" />
+        where is_valid = '1'
+        <if test="id != null ">
+            and id = #{id}
+        </if>
+        <if test="username != null and username != ''">
+            and username = #{username}
+        </if>
+        <if test="realName != null and realName != ''">
+            and real_name = #{realName}
+        </if>
+        <if test="sex != null ">
+            and sex = #{sex}
+        </if>
+        <if test="email != null and email != ''">
+            and email = #{email}
+        </if>
+        <if test="password != null and password != ''">
+            and password = #{password}
+        </if>
+        <if test="phone != null and phone != ''">
+            and phone = #{phone}
+        </if>
+        <if test="photo != null and photo != ''">
+            and photo = #{photo}
+        </if>
+        <if test="salt != null and salt != ''">
+            and salt = #{salt}
+        </if>
+        <if test="isAdmin != null ">
+            and is_admin = #{isAdmin}
+        </if>
+        <if test="status != null ">
+            and status = #{status}
+        </if>
+        <if test="loginIp != null and loginIp != ''">
+            and login_ip = #{loginIp}
+        </if>
+        <if test="loginDate != null ">
+            and login_date = #{loginDate}
+        </if>
+        <if test="isValid != null ">
+            and is_valid = #{isValid}
+        </if>
+        <if test="createDate != null ">
+            and create_date = #{createDate}
+        </if>
+        <if test="createUser != null ">
+            and create_user = #{createUser}
+        </if>
+        <if test="updateDate != null ">
+            and update_date = #{updateDate}
+        </if>
+        <if test="updateUser != null ">
+            and update_user = #{updateUser}
+        </if>
+        <if test="remark != null and remark != ''">
+            and remark = #{remark}
+        </if>
+        order by id
+    </select>
+
+    <!-- 批量删除（逻辑删除） -->
+    <update id="batchRemove">
+        update <include refid="table_name"></include>
+        set
+        <trim suffixOverrides=",">
+            is_valid = 0,
+            update_date = now(),
+        </trim>
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <!-- 批量修改状态 -->
+    <update id="batchModifyStatus">
+        update <include refid="table_name"></include>
+        set
+        <trim suffixOverrides=",">
+            <if test="status != null">
+                status = #{status},
+            </if>
+            update_date = now(),
+        </trim>
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <!-- 根据用户名查询SysUser -->
+    <select id="queryByUsername" resultType="com.fdh.business.modules.per.entity.SysUser">
+        select <include refid="Base_Column_List_AsType"></include>
+        from <include refid="table_name"></include>
+        where is_valid = 1 and status = 1
+        <if test="username != null">
+            and username = #{username}
+        </if>
+    </select>
+
+    <!-- 根据手机号查询SysUser -->
+    <select id="queryByPhone" resultType="com.fdh.business.modules.per.entity.SysUser">
+        select <include refid="Base_Column_List_AsType"></include>
+        from <include refid="table_name"></include>
+        where is_valid = 1 and status = 1
+        <if test="phone != null">
+            and phone = #{phone}
+        </if>
+    </select>
+
+    <!-- 根据邮箱查询SysUser -->
+    <select id="queryByEmail" resultType="com.fdh.business.modules.per.entity.SysUser">
+        select <include refid="Base_Column_List_AsType"></include>
+        from <include refid="table_name"></include>
+        where is_valid = 1 and status = 1
+        <if test="email != null">
+            and email = #{email}
+        </if>
+    </select>
+</mapper>
+

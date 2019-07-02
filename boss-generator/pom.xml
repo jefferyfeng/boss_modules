@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>boss</artifactId>
+    <groupId>com.fdh</groupId>
+    <version>1.0</version>
+  </parent>
+
+  <artifactId>boss-generator</artifactId>
+  <description>boss 自动生成模块</description>
+
+  <dependencies>
+
+    <!-- freemarker代码生成使用模板 -->
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+    </dependency>
+
+    <!-- 通用工具-->
+    <dependency>
+      <groupId>com.fdh</groupId>
+      <artifactId>boss-common</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+  </build>
+</project>
