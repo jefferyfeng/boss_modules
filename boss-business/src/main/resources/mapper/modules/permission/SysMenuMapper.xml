@@ -255,5 +255,32 @@
         where is_valid = 1 and parent_id = 0
     </select>
 
+    <!-- 获取管理员顶部菜单 -->
+    <select id="queryAdminTopMenus" resultType="com.fdh.business.modules.per.entity.SysMenu">
+        select <include refid="Base_Column_List_AsType"></include>
+        from <include refid="table_name"></include>
+        where is_valid = 1 and parent_id = 0
+    </select>
+
+    <select id="queryTopMenusByUser" resultType="com.fdh.business.modules.per.entity.SysMenu">
+        select sm.id as id,
+        sm.menu_name as menuName,
+        sm.parent_id as parentId,
+        sm.menu_url as menuUrl,
+        sm.permission as permission,
+        sm.sequence as sequence,
+        sm.menu_icon as menuIcon,
+        sm.is_valid as isValid,
+        sm.create_date as createDate,
+        sm.create_user as createUser,
+        sm.update_date as updateDate,
+        sm.update_user as updateUser,
+        sm.remark as remark
+        from sys_user_role sur
+        left join sys_role_menu srm on sur.role_id = srm.role_id
+        left join sys_menu sm on srm.menu_id = sm.id
+        where sur.is_valid = 1 and srm.is_valid = 1 and sm.is_valid = 1
+    </select>
+
 </mapper>
 

@@ -193,11 +193,12 @@
     </update>
 
     <!-- 根据用户id查询菜单 -->
-    <select id="listMenusByRoles">
-        select distinct menu_id as menuId
-        from <include refid="table_name"></include>
-        where is_valid = 1
-        and role_id in
+    <select id="listMenusByRoles" resultType="com.fdh.business.modules.per.entity.SysMenu">
+        select menu.*
+        from <include refid="table_name"></include> rmenu
+        left join sys_menu menu on rmenu.menu_id = menu.id
+        where rmenu.is_valid = 1 and menu.is_valid = 1
+        and rmenu.role_id in
         <foreach collection="roles" item="roleId" open="(" close=")" separator=",">
             #{roleId}
         </foreach>

@@ -84,10 +84,10 @@ layui.use(['form','layer','table','laytpl'],function(){
             }
         })
         layui.layer.full(index);
-        window.sessionStorage.setItem("templates.modules.per.index",index);
+        window.sessionStorage.setItem("templates.modules.portal.index",index);
         //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
         $(window).on("resize",function(){
-            layui.layer.full(window.sessionStorage.getItem("templates.modules.per.index"));
+            layui.layer.full(window.sessionStorage.getItem("templates.modules.portal.index"));
         })
     }
     $(".addNews_btn").click(function(){

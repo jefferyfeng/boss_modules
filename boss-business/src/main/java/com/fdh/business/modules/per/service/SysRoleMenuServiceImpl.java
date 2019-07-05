@@ -1,6 +1,7 @@
 package com.fdh.business.modules.per.service;
 
 import com.fdh.business.modules.per.dao.SysRoleMenuDao;
+import com.fdh.business.modules.per.entity.SysMenu;
 import com.fdh.business.modules.per.entity.SysRoleMenu;
 import com.fdh.business.modules.sysuser.entity.SysUser;
 import com.fdh.common.constants.Constants;
@@ -122,7 +123,8 @@ public class SysRoleMenuServiceImpl implements SysRoleMenuService{
      */
     @Override
     public Set<String> listMenusByUserId(Set<String> roles) {
-        return new HashSet<String>(Arrays.asList(sysRoleMenuDao.listMenusByRoles(roles)));
+        // TODO
+        return new HashSet<String>();
     }
 
     /**
@@ -141,6 +143,22 @@ public class SysRoleMenuServiceImpl implements SysRoleMenuService{
 
         }
         return navs;
+    }
+
+    /**
+     * 根据角色获取权限
+     *
+     * @param roles
+     * @return menus
+     */
+    @Override
+    public Set<String> listPermissionsByRoles(Set<String> roles){
+        List<SysMenu> menus = sysRoleMenuDao.listMenusByRoles(roles);
+        Set<String> persmissions = new HashSet<>();
+        for (SysMenu menu : menus) {
+            persmissions.add(menu.getPermission());
+        }
+        return persmissions;
     }
 
 }

@@ -1,5 +1,7 @@
 package com.fdh.common.core.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  * @date: 2019/6/3 13:07
  * @author: fdh
  */
+@Data
 public class PageBean implements Serializable {
     /**
      * 定义数据库 分页操作的起始索引
@@ -51,52 +54,6 @@ public class PageBean implements Serializable {
      * 当前页取得条数
      */
     private Integer pageCount;
-
-    public PageBean() {
-        this.currentPage = DEFAULT_PAGE;
-        this.pageSize = DEFAULT_PAGESIZE;
-    }
-
-    public PageBean(Integer currentPage, Integer pageSize) {
-        this.currentPage = currentPage;
-        this.pageSize = pageSize;
-    }
-
-    public Integer getCurrentPage() {
-        return currentPage;
-    }
-
-    public void setCurrentPage(Integer currentPage) {
-        this.currentPage = currentPage;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Integer getTotal() {
-        return total;
-    }
-
-    public void setTotal(Integer total) {
-        this.total = total;
-    }
-
-    public Integer getBegin() {
-        return begin;
-    }
-
-    public Integer getEnd() {
-        return end;
-    }
-
-    public Integer getPageCount() {
-        return pageCount;
-    }
 
     /**
      * 通过传入总条数计算各个参数值

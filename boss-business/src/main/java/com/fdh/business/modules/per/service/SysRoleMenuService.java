@@ -86,4 +86,12 @@ public interface SysRoleMenuService {
      * @return
      */
     List<LayuiNav> listNavsByUser(SysUser sysUser);
+
+    /**
+     * 根据角色获取权限
+     *
+     * @param roles 角色
+     * @return permissions 权限
+     */
+    Set<String> listPermissionsByRoles(Set<String> roles);
 }

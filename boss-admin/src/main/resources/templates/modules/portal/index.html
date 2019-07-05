@@ -16,7 +16,7 @@
 </head>
 
 <!-- 页面隐藏域 -->
-<input id="contextPath" type="hidden" th:value="@{}" />
+<input id="contextPath" type="hidden" th:value="${#servletContext.contextPath}" />
 
 <body class="main_body">
 	<div class="layui-layout layui-layout-admin">
@@ -31,20 +31,18 @@
 				<ul class="layui-nav mobileTopLevelMenus" mobile>
 					<li class="layui-nav-item" data-menu="contentManagement">
 						<a href="javascript:;"><i class="seraph icon-caidan"></i><cite>layuiCMS</cite></a>
-						<dl class="layui-nav-child" id="menuTop" th:each="item : ${topMenus}">
+						<dl class="layui-nav-child" id="menuTop">
 							<dd class="layui-this" data-menu="${item.id}">
-								<a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i><cite th:text="${item.title}"></cite></a>
+								<a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i><cite></cite></a>
 							</dd>
 						</dl>
 					</li>
 				</ul>
 				<!-- pc端 -->
-				<ul class="layui-nav topLevelMenus" pc>
-					<c:forEach items="${topMenus}" var="item" varStatus="status">
-						<li class="layui-nav-item layui-this" data-menu="${item.id}" pc>
-							<a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i><cite>${item.title}</cite></a>
-						</li>
-					</c:forEach>
+				<ul class="layui-nav topLevelMenus" pc th:each="topMenu : ${topMenus}">
+					<li class="layui-nav-item layui-this" th:data-menu="${topMenu.id}" pc>
+						<a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i><cite th:text="${topMenu.title}"></cite></a>
+					</li>
 				</ul>
 			    <!-- 顶部右侧菜单 -->
 			    <ul class="layui-nav top_menu">
@@ -55,15 +53,15 @@
 						<a href="javascript:;"><i class="seraph icon-lock"></i><cite>锁屏</cite></a>
 					</li>
 					<li class="layui-nav-item" id="userInfo">
-						<a href="javascript:;"><img src="${pageContext.request.contextPath}/static/images/photo.jpg" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">${user.username}</cite></a>
+						<a href="javascript:;"><img th:src="@{/static/images/photo.jpg}" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">[[${user.username}]]</cite></a>
 						<dl class="layui-nav-child">
 							<dd>
-                                <a href="javascript:;" data-url="${pageContext.request.contextPath}/sysUser/toUserInfo">
+                                <a href="javascript:;" th:data-url="@{/sysUser/toUserInfo}">
                                     <i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>个人资料</cite>
                                 </a>
                             </dd>
 							<dd>
-                                <a href="javascript:;" data-url="${pageContext.request.contextPath}/sysUser/toChangePwd">
+                                <a href="javascript:;" th:data-url="@{/sysUser/toChangePwd}">
                                     <i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite>
                                 </a>
                             </dd>
@@ -83,7 +81,7 @@
                                 </a>
                             </dd>
 							<dd>
-                                <a href="${pageContext.request.contextPath}/static/page/login/login.jsp" class="signOut">
+                                <a th:href="@{/static/page/login/login.jsp}" class="signOut">
                                     <i class="seraph icon-tuichu"></i><cite>退出</cite>
                                 </a>
                             </dd>
@@ -95,8 +93,8 @@
 		<!-- 左侧导航 -->
 		<div class="layui-side layui-bg-black">
 			<div class="user-photo">
-				<a class="img" title="我的头像" ><img src="${pageContext.request.contextPath}/static/images/photo.jpg" class="userAvatar"></a>
-				<p>你好！<span class="userName">${user.username}</span>, 欢迎登录</p>
+				<a class="img" title="我的头像" ><img th:src="${user.phone}" class="userAvatar"></a>
+				<p>你好！<span class="userName">[[${user.username}]]</span>, 欢迎登录</p>
 			</div>
 			<!-- 搜索 -->
 			<div class="layui-form component">
@@ -106,7 +104,7 @@
 			<div class="navBar layui-side-scroll" id="navBar">
 				<ul class="layui-nav layui-nav-tree">
 					<li class="layui-nav-item layui-this">
-						<a href="javascript:;" data-url="${pageContext.request.contextPath}/per/toMain"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
+						<a href="javascript:;" th:data-url="@{/main}"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
 					</li>
 				</ul>
 			</div>
@@ -134,7 +132,7 @@
 				</ul>
 				<div class="layui-tab-content clildFrame">
 					<div class="layui-tab-item layui-show">
-						<iframe src="${pageContext.request.contextPath}/per/toMain"></iframe>
+						<iframe th:src="@{/main}"></iframe>
 					</div>
 				</div>
 			</div>

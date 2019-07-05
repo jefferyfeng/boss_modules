@@ -4,6 +4,7 @@ import com.fdh.business.modules.per.exception.UserException;
 import com.fdh.business.modules.sysuser.dao.SysUserDao;
 import com.fdh.business.modules.sysuser.entity.SysUser;
 import com.fdh.common.constants.Constants;
+import com.fdh.common.util.CollectionUtils;
 import com.fdh.common.util.ServletUtil;
 import com.fdh.common.util.StringUtil;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -142,8 +143,8 @@ public class SysUserServiceImpl implements SysUserService {
      */
     @Override
     public SysUser login (SysUser sysUser){
-        String validateCode = (String) ServletUtil.getRequest().getAttribute(Constants.VERIFY_CODE);
-        String sessionCode = (String) ServletUtil.getSession().getAttribute(Constants.VERIFY_CODE);
+        String validateCode = (String) ServletUtil.getRequest().getAttribute(Constants.CAPTCHA_CODE);
+        String sessionCode = (String) ServletUtil.getSession().getAttribute(Constants.CAPTCHA_CODE);
         if(StringUtil.isEmpty(validateCode)){
             throw new UserException("验证码为空");
         }
@@ -153,11 +154,7 @@ public class SysUserServiceImpl implements SysUserService {
         if(StringUtil.isEmpty(sysUser.getUsername())){
             throw new UserException("用户名为空");
         }
-        List<SysUser> users = sysUserDao.queryByUsername(sysUser.getUsername());
-        if(StringUtil.isEmpty(users)){
-            throw new UserException("用户名不存在");
-        }
-        SysUser user = users.get(0);
+        SysUser user = sysUserDao.queryByUsername(sysUser.getUsername());
         String medPwd = DigestUtils.md5Hex(sysUser.getPassword() + user.getSalt());
         if(!user.getPassword().equals(medPwd)){
             throw new UserException("密码错误");
@@ -173,11 +170,8 @@ public class SysUserServiceImpl implements SysUserService {
      */
     @Override
     public SysUser queryByUsername(String username) {
-        List<SysUser> users = sysUserDao.queryByUsername(username);
-        if(StringUtil.isEmpty(users)){
-            return null;
-        }
-        return users.get(0);
+        SysUser sysUser = sysUserDao.queryByUsername(username);
+        return sysUser;
     }
 
     /**
@@ -188,11 +182,8 @@ public class SysUserServiceImpl implements SysUserService {
      */
     @Override
     public SysUser queryByPhone(String phone) {
-        List<SysUser> users = sysUserDao.queryByPhone(phone);
-        if(StringUtil.isEmpty(users)){
-            return null;
-        }
-        return users.get(0);
+        SysUser sysUser = sysUserDao.queryByPhone(phone);
+        return sysUser;
     }
 
     /**
@@ -203,10 +194,7 @@ public class SysUserServiceImpl implements SysUserService {
      */
     @Override
     public SysUser queryByEmail(String email) {
-        List<SysUser> users = sysUserDao.queryByEmail(email);
-        if(StringUtil.isEmpty(users)){
-            return null;
-        }
-        return users.get(0);
+        SysUser sysUser = sysUserDao.queryByEmail(email);
+        return sysUser;
     }
 }

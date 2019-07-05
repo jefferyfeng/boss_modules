@@ -1,6 +1,8 @@
 package com.fdh.common.core.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -20,6 +22,8 @@ import java.util.Date;
  * @date: 2019/6/3 11:42
  * @author: fdh
  */
+@Getter
+@Setter
 public class BaseEntity implements Serializable {
 
     /** 逻辑有效 0.无效 1.有效 */
@@ -43,60 +47,4 @@ public class BaseEntity implements Serializable {
     /** 分页参数 */
     @JsonIgnore
     private PageBean pageBean;
-
-    public Integer getIsValid() {
-        return isValid;
-    }
-
-    public void setIsValid(Integer isValid) {
-        this.isValid = isValid;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Long getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(Long createUser) {
-        this.createUser = createUser;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    public Long getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Long updateUser) {
-        this.updateUser = updateUser;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public PageBean getPageBean() {
-        return pageBean;
-    }
-
-    public void setPageBean(PageBean pageBean) {
-        this.pageBean = pageBean;
-    }
 }

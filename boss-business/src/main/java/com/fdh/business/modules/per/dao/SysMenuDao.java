@@ -68,4 +68,18 @@ public interface SysMenuDao {
      * @return
      */
     List<SysMenu> listMenuAdmin();
+
+    /**
+     * 获取管理员顶部菜单
+     *
+     * @return
+     */
+    List<SysMenu> queryAdminTopMenus();
+
+    /**
+     * 根据用户id获取顶部菜单
+     *
+     * @return
+     */
+    List<SysMenu> queryTopMenusByUser(Long userId);
 }

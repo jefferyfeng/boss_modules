@@ -77,7 +77,7 @@ public interface SysUserDao {
      * @param username
      * @return
      */
-    List<SysUser> queryByUsername(String username);
+    SysUser queryByUsername(@Param("username") String username);
 
     /**
      * 根据手机号查询SysUser
@@ -85,7 +85,7 @@ public interface SysUserDao {
      * @param phone
      * @return
      */
-    List<SysUser> queryByPhone(String phone);
+    SysUser queryByPhone(String phone);
 
     /**
      * 根据邮箱查询SysUser
@@ -93,5 +93,5 @@ public interface SysUserDao {
      * @param email
      * @return
      */
-    List<SysUser> queryByEmail(String email);
+    SysUser queryByEmail(@Param("email") String email);
 }

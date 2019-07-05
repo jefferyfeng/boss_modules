@@ -10,13 +10,13 @@ import com.fdh.common.core.result.BaseResult;
  */
 public class ResultUtil{
     public static BaseResult result(int code, String msg){
-        return new BaseResult(code,msg);
+        return new BaseResult(code,msg,null);
     }
     public static <T> BaseResult<T> result(int code,String msg,T body){
     return new BaseResult(code,msg,body);
     }
     public static BaseResult result(ResultConstants resultConstants){
-    return new BaseResult(resultConstants.getCode(),resultConstants.getMsg());
+    return new BaseResult(resultConstants.getCode(),resultConstants.getMsg(),null);
     }
     public static <T> BaseResult result(ResultConstants resultConstants, T body){
         return new BaseResult(resultConstants.getCode(),resultConstants.getMsg(),body);

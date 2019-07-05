@@ -3,6 +3,7 @@ package com.fdh.common.core.controller;
 import com.fdh.common.constants.ResultConstants;
 import com.fdh.common.core.result.BaseResult;
 import com.fdh.common.util.ResultUtil;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -14,8 +15,6 @@ import javax.servlet.http.HttpSession;
  * @description: 基础controller
  * @date: 2019/6/3 14:38
  * @author: fdh
- * @param:
- * @return:
  */
 public class BaseController {
 
@@ -60,6 +59,16 @@ public class BaseController {
      */
     public BaseResult success(){
         return ResultUtil.result(ResultConstants.SUCCESS);
+    }
+
+    /**
+     * @description: 返回成功
+     * @date: 2019/6/3 15:36
+     * @author: fdh
+     * @return: com.fdh.common.core.result.BaseResult
+     */
+    public <T> BaseResult success(T body){
+        return ResultUtil.result(ResultConstants.SUCCESS, body);
     }
 
     /**

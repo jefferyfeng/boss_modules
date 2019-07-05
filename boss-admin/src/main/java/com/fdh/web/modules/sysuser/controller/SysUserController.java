@@ -131,7 +131,7 @@ public class SysUserController extends BaseController {
     public ModelAndView toUsers(ModelAndView modelAndView){
         List<SysRole> rolesList = sysRoleService.queryAll();
         modelAndView.addObject("rolesList",rolesList);
-        modelAndView.setViewName("modules/per/sysuser/sysUser_list");
+        modelAndView.setViewName("modules/portal/sysuser/sysUser_list");
         return modelAndView;
     }
 
@@ -142,7 +142,7 @@ public class SysUserController extends BaseController {
      */
     @RequestMapping("/toAddUser")
     public ModelAndView toAddUser(ModelAndView modelAndView){
-        modelAndView.setViewName("modules/per/sysuser/sysUser_add");
+        modelAndView.setViewName("modules/portal/sysuser/sysUser_add");
         return modelAndView;
     }
 
@@ -156,7 +156,7 @@ public class SysUserController extends BaseController {
     public ModelAndView toEditUser(@Param("userId") Long userId, ModelAndView modelAndView){
         SysUser sysUser = sysUserService.queryOne(userId);
         modelAndView.addObject("userVo",sysUser);
-        modelAndView.setViewName("modules/per/sysuser/sysUser_edit");
+        modelAndView.setViewName("modules/portal/sysuser/sysUser_edit");
         return modelAndView;
     }
 
@@ -169,7 +169,7 @@ public class SysUserController extends BaseController {
     @RequestMapping("/toUserRoleEdit")
     public ModelAndView toUserRoleEdit(@RequestParam("userId")Long userId, ModelAndView modelAndView){
         modelAndView.addObject("userId",userId);
-        modelAndView.setViewName("modules/per/sysuser/sysUser_role_edit");
+        modelAndView.setViewName("modules/portal/sysuser/sysUser_role_edit");
         return modelAndView;
     }
 
@@ -229,7 +229,7 @@ public class SysUserController extends BaseController {
      */
     @RequestMapping("/toChangePwd")
     public ModelAndView toChangePwd(ModelAndView modelAndView){
-        modelAndView.setViewName("modules/per/sysuser/sysUser_pwd_edit");
+        modelAndView.setViewName("modules/portal/sysuser/sysUser_pwd_edit");
         return modelAndView;
     }
 
@@ -238,7 +238,7 @@ public class SysUserController extends BaseController {
      */
     @RequestMapping("/toUserInfo")
     public ModelAndView toUserInfo(ModelAndView modelAndView){
-        modelAndView.setViewName("modules/per/sysuser/sysUser_info");
+        modelAndView.setViewName("modules/portal/sysuser/sysUser_info");
         return modelAndView;
     }
 

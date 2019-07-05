@@ -65,19 +65,19 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //新增等级
     $(".addGrade").click(function(){
         var $tr = $(".layui-table-body.layui-table-main tbody tr:last");
-        if($tr.data("templates.modules.per.index") < 9) {
-            var newHtml = '<tr data-index="' + ($tr.data("templates.modules.per.index") + 1) + '">' +
-                '<td data-field="id" data-edit="text" align="center"><div class="layui-table-cell laytable-cell-1-id">' + ($tr.data("templates.modules.per.index") + 2) + '</div></td>' +
-                '<td data-field="gradeIcon" align="center" data-content="icon-vip' + ($tr.data("templates.modules.per.index") + 2) + '"><div class="layui-table-cell laytable-cell-1-gradeIcon"><span class="seraph vip' + ($tr.data("templates.modules.per.index") + 2) + ' icon-vip' + ($tr.data("templates.modules.per.index") + 2) + '"></span></div></td>' +
+        if($tr.data("templates.modules.portal.index") < 9) {
+            var newHtml = '<tr data-index="' + ($tr.data("templates.modules.portal.index") + 1) + '">' +
+                '<td data-field="id" data-edit="text" align="center"><div class="layui-table-cell laytable-cell-1-id">' + ($tr.data("templates.modules.portal.index") + 2) + '</div></td>' +
+                '<td data-field="gradeIcon" align="center" data-content="icon-vip' + ($tr.data("templates.modules.portal.index") + 2) + '"><div class="layui-table-cell laytable-cell-1-gradeIcon"><span class="seraph vip' + ($tr.data("templates.modules.portal.index") + 2) + ' icon-vip' + ($tr.data("templates.modules.portal.index") + 2) + '"></span></div></td>' +
                 '<td data-field="gradeName" data-edit="text" align="center"><div class="layui-table-cell laytable-cell-1-gradeName">请输入等级名称</div></td>' +
                 '<td data-field="gradeValue" data-edit="text" align="center"><div class="layui-table-cell laytable-cell-1-gradeValue">0</div></td>' +
                 '<td data-field="gradeGold" data-edit="text" align="center"><div class="layui-table-cell laytable-cell-1-gradeGold">0</div></td>' +
                 '<td data-field="gradePoint" data-edit="text" align="center"><div class="layui-table-cell laytable-cell-1-gradePoint">0</div></td>' +
-                '<td data-field="' + ($tr.data("templates.modules.per.index") + 1) + '" align="center" data-content="" data-minwidth="100"><div class="layui-table-cell laytable-cell-1-' + ($tr.data("templates.modules.per.index") + 1) + '"> <input type="checkbox" name="gradeStatus" lay-filter="gradeStatus" lay-skin="switch" lay-text="启用|禁用" checked=""><div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>启用</em><i></i></div></div></td>' +
+                '<td data-field="' + ($tr.data("templates.modules.portal.index") + 1) + '" align="center" data-content="" data-minwidth="100"><div class="layui-table-cell laytable-cell-1-' + ($tr.data("templates.modules.portal.index") + 1) + '"> <input type="checkbox" name="gradeStatus" lay-filter="gradeStatus" lay-skin="switch" lay-text="启用|禁用" checked=""><div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>启用</em><i></i></div></div></td>' +
                 '</tr>';
             $(".layui-table-body.layui-table-main tbody").append(newHtml);
-            $(".layui-table-fixed.layui-table-fixed-online tbody").append('<tr data-index="' + ($tr.data("templates.modules.per.index") + 1) + '"><td data-field="id" data-edit="text" align="center"><div class="layui-table-cell laytable-cell-1-id">' + ($tr.data("templates.modules.per.index") + 2) +'</div></td></tr>');
-            $(".layui-table-fixed.layui-table-fixed-r tbody").append('<tr data-index="' + ($tr.data("templates.modules.per.index") + 1) + '"><td data-field="' + ($tr.data("templates.modules.per.index") + 1) + '" align="center" data-content="" data-minwidth="100"><div class="layui-table-cell laytable-cell-1-' + ($tr.data("templates.modules.per.index") + 1) + '"> <input type="checkbox" name="gradeStatus" lay-filter="gradeStatus" lay-skin="switch" lay-text="启用|禁用" checked=""><div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>启用</em><i></i></div></div></td></tr>');
+            $(".layui-table-fixed.layui-table-fixed-online tbody").append('<tr data-index="' + ($tr.data("templates.modules.portal.index") + 1) + '"><td data-field="id" data-edit="text" align="center"><div class="layui-table-cell laytable-cell-1-id">' + ($tr.data("templates.modules.portal.index") + 2) +'</div></td></tr>');
+            $(".layui-table-fixed.layui-table-fixed-r tbody").append('<tr data-index="' + ($tr.data("templates.modules.portal.index") + 1) + '"><td data-field="' + ($tr.data("templates.modules.portal.index") + 1) + '" align="center" data-content="" data-minwidth="100"><div class="layui-table-cell laytable-cell-1-' + ($tr.data("templates.modules.portal.index") + 1) + '"> <input type="checkbox" name="gradeStatus" lay-filter="gradeStatus" lay-skin="switch" lay-text="启用|禁用" checked=""><div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>启用</em><i></i></div></div></td></tr>');
             form.render();
         }else{
             layer.alert("模版中由于图标数量的原因，只支持到vip10，实际开发中可根据实际情况修改。当然也不要忘记增加对应等级的颜色。",{maxWidth:300});

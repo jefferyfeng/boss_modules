@@ -2,7 +2,10 @@ package com.fdh.business.modules.per.service;
 
 import com.fdh.business.modules.per.dao.SysMenuDao;
 import com.fdh.business.modules.per.entity.SysMenu;
+import com.fdh.business.modules.sysuser.entity.SysUser;
+import com.fdh.common.constants.Constants;
 import com.fdh.common.core.entity.LayuiNav;
+import com.fdh.common.util.CollectionUtils;
 import com.fdh.common.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -114,6 +117,27 @@ public class SysMenuServiceImpl implements SysMenuService{
     }
 
     /**
+     * 获取顶部菜单
+     *
+     * @return
+     */
+    @Override
+    public List<LayuiNav> listNavs(SysUser sysUser){
+        if(null == sysUser){
+            return new ArrayList<>();
+        }
+        //超级管理员拥有一切菜单
+        List<SysMenu> sysMenus = null;
+        if(Constants.IS_ADMIN.YES.getValue().equals(sysUser.getIsAdmin())){
+            sysMenus = sysMenuDao.queryAdminTopMenus();
+        }else{
+            sysMenus = sysMenuDao.queryTopMenusByUser(sysUser.getId());
+        }
+        List<LayuiNav> layuiMenus = getLayuiNavsAdmin(sysMenus);
+        return layuiMenus;
+    }
+
+    /**
      * 超级管理员顶部菜单
      *
      * @return
@@ -126,13 +150,23 @@ public class SysMenuServiceImpl implements SysMenuService{
     }
 
     /**
+     * 获取左侧菜单
+     *
+     * @param user
+     */
+    @Override
+    public List<LayuiNav> listMenusNavs(SysUser user, Long parentId) {
+        return null;
+    }
+
+    /**
      * 配置为layui的权限菜单
      *
      * @param menus 数据库查询的菜单
      * @return layuiNavList LayuiNav对象集合的权限菜单
      */
     private List<LayuiNav> getLayuiNavsAdmin(List<SysMenu> menus){
-        if(StringUtil.isEmpty(menus)) {
+        if(CollectionUtils.isEmpty(menus)) {
             return null;
         }
         List<LayuiNav> layuiNavs = new ArrayList<>();

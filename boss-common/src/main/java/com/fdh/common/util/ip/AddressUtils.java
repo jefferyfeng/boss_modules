@@ -3,6 +3,7 @@ package com.fdh.common.util.ip;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fdh.common.util.StringUtil;
 import com.fdh.common.util.http.RestTemplateUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,12 +17,11 @@ import java.util.Map;
  * @date: 2019/6/6 10:41
  * @author: fdh
  */
+@Slf4j
 public class AddressUtils {
 
     @Value("${boss.address-enabled}")
     private static boolean isAddressEnabled;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(AddressUtils.class);
 
     /**
      * 淘宝ip查询接口
@@ -39,7 +39,7 @@ public class AddressUtils {
             ResponseEntity<String> result = RestTemplateUtils.post(IP_URL, "ip=" + ip, String.class);
             String rspStr = result.getBody();
             if (StringUtil.isEmpty(rspStr)) {
-                LOGGER.error("获取地理位置异常 {}", ip);
+                log.error("获取地理位置异常 {}", ip);
                 return address;
             }
             try {
@@ -56,11 +56,11 @@ public class AddressUtils {
                     }
                     address = region + " " + city;
                 } else {
-                    LOGGER.error("获取地理位置异常 {}", ip);
+                    log.error("获取地理位置异常 {}", ip);
                     return address;
                 }
             } catch (IOException e) {
-                LOGGER.error("获取地理位置异常 {}", ip);
+                log.error("获取地理位置异常 {}", ip);
                 return address;
             }
         }

@@ -1,7 +1,9 @@
 package com.fdh.framework.util;
 
 import com.fdh.business.modules.sysuser.entity.SysUser;
+import com.fdh.framework.shiro.realm.UserRealm;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.mgt.RealmSecurityManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
@@ -82,9 +84,9 @@ public class ShiroUtil {
      * @return: void
      */
     public static void clearCachedAuthorizationInfo() {
-        /*RealmSecurityManager rsm = (RealmSecurityManager) SecurityUtils.getSecurityManager();
+        RealmSecurityManager rsm = (RealmSecurityManager) SecurityUtils.getSecurityManager();
         UserRealm realm = (UserRealm) rsm.getRealms().iterator().next();
-        realm.clearCachedAuthorizationInfo();*/
+        realm.clearCachedAuthorizationInfo();
     }
 
     /**

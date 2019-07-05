@@ -53,8 +53,7 @@ public class BaseException extends RuntimeException {
     }
 
     @Override
-    public String getMessage()
-    {
+    public String getMessage() {
         String message = null;
         if (StringUtil.isNotEmpty(message)) {
             message = MessageUtils.message(code, args);

@@ -10,25 +10,34 @@ layui.use(['form','layer','jquery'],function(){
             time:5000
         });
     })
+    
+    $('#captchaImg').click(function () {
+       $(this).attr('src',$(this).attr('src') + "?time="+ new Date().getTime());
+    });
 
     //登录按钮
     form.on("submit(login)",function(data){
-        $(this).text("登录中...").attr("disabled","disabled").addClass("layui-disabled");
-
+        var btn = $(this);
+        btn.text("登录中...").attr("disabled","disabled").addClass("layui-disabled");
         $.ajax({
             type : 'post',
             data : data.field,
             url : contextPath + '/login',
             dataType : 'json',
             success : function (result) {
-                
+                if(common.res.success(result)){
+                    window.location.href = contextPath + '/index';
+                }else{
+                    btn.text("登陆").removeAttr("disabled").removeClass("layui-disabled");
+                    common.alert.fail(result.msg);
+                }
+            },
+            error : function () {
+                btn.text("登录").removeAttr("disabled").removeClass("layui-disabled");
+                common.alert.fail();
             }
         });
 
-
-        /*setTimeout(function(){
-            window.location.href = "/layuicms2.0";
-        },1000);*/
         return false;
     })
 

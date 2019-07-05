@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fdh.business.modules.per.dao.SysUserDao">
+<mapper namespace="com.fdh.business.modules.sysuser.dao.SysUserDao">
     <!--表名-->
     <sql id="table_name">sys_user</sql>
 
@@ -50,7 +50,7 @@
     </sql>
 
     <!-- 增加一个实体 -->
-    <insert id="insert" parameterType="com.fdh.business.modules.per.entity.SysUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+    <insert id="insert" parameterType="com.fdh.business.modules.sysuser.entity.SysUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
         insert into <include refid="table_name" />
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="username != null">
@@ -174,7 +174,7 @@
     </delete>
 
     <!-- 更新一个实体 -->
-    <update id="update" parameterType="com.fdh.business.modules.per.entity.SysUser">
+    <update id="update" parameterType="com.fdh.business.modules.sysuser.entity.SysUser">
         update <include refid="table_name" />
         set
         <trim suffixOverrides=",">
@@ -237,7 +237,7 @@
     </update>
 
     <!-- 根据主键查询一个实体 -->
-    <select id="queryOne" parameterType="java.lang.Long"  resultType="com.fdh.business.modules.per.entity.SysUser">
+    <select id="queryOne" parameterType="java.lang.Long"  resultType="com.fdh.business.modules.sysuser.entity.SysUser">
         select
         <include refid="Base_Column_List_AsType" />
         from <include refid="table_name" />
@@ -245,7 +245,7 @@
     </select>
 
     <!-- 查询全部 -->
-    <select id="queryAll" resultType="com.fdh.business.modules.per.entity.SysUser">
+    <select id="queryAll" resultType="com.fdh.business.modules.sysuser.entity.SysUser">
         select
         <include refid="Base_Column_List_AsType" />
         from <include refid="table_name" />
@@ -253,7 +253,7 @@
     </select>
 
     <!-- 根据字段查询 带分页 -->
-    <select id="queryByFieldsAndPage" resultType="com.fdh.business.modules.per.entity.SysUser">
+    <select id="queryByFieldsAndPage" resultType="com.fdh.business.modules.sysuser.entity.SysUser">
         select
         <include refid="Base_Column_List_AsType" />
         from <include refid="table_name" />
@@ -349,33 +349,36 @@
     </update>
 
     <!-- 根据用户名查询SysUser -->
-    <select id="queryByUsername" resultType="com.fdh.business.modules.per.entity.SysUser">
+    <select id="queryByUsername" resultType="com.fdh.business.modules.sysuser.entity.SysUser">
         select <include refid="Base_Column_List_AsType"></include>
         from <include refid="table_name"></include>
         where is_valid = 1 and status = 1
         <if test="username != null">
             and username = #{username}
         </if>
+        limit 1
     </select>
 
     <!-- 根据手机号查询SysUser -->
-    <select id="queryByPhone" resultType="com.fdh.business.modules.per.entity.SysUser">
+    <select id="queryByPhone" resultType="com.fdh.business.modules.sysuser.entity.SysUser">
         select <include refid="Base_Column_List_AsType"></include>
         from <include refid="table_name"></include>
         where is_valid = 1 and status = 1
         <if test="phone != null">
             and phone = #{phone}
         </if>
+        limit 1
     </select>
 
     <!-- 根据邮箱查询SysUser -->
-    <select id="queryByEmail" resultType="com.fdh.business.modules.per.entity.SysUser">
+    <select id="queryByEmail" resultType="com.fdh.business.modules.sysuser.entity.SysUser">
         select <include refid="Base_Column_List_AsType"></include>
         from <include refid="table_name"></include>
         where is_valid = 1 and status = 1
         <if test="email != null">
             and email = #{email}
         </if>
+        limit 1
     </select>
 </mapper>
 

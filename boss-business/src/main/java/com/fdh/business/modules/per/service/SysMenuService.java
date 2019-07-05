@@ -1,6 +1,7 @@
 package com.fdh.business.modules.per.service;
 
 import com.fdh.business.modules.per.entity.SysMenu;
+import com.fdh.business.modules.sysuser.entity.SysUser;
 import com.fdh.common.core.entity.LayuiNav;
 
 import java.util.List;
@@ -70,9 +71,23 @@ public interface SysMenuService {
     void batchRemove(Long[] ids);
 
     /**
+     * 获取顶部菜单
+     *
+     * @return
+     */
+    List<LayuiNav> listNavs(SysUser sysUser);
+
+    /**
      * 超级管理员顶部菜单
      *
      * @return
      */
     List<LayuiNav> listNavsAdmin();
+
+    /**
+     * 获取左侧菜单
+     *
+     * @param user
+     */
+    List<LayuiNav> listMenusNavs(SysUser user, Long parentId);
 }

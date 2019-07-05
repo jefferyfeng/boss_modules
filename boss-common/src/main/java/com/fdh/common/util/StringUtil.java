@@ -65,8 +65,7 @@ public class StringUtil{
      * @return: java.lang.String
      */
     public static String getBlock(Object msg) {
-        if (msg == null)
-        {
+        if (msg == null) {
             msg = "";
         }
         return "[" + msg.toString() + "]";

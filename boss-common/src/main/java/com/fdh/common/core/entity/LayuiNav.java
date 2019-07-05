@@ -1,10 +1,15 @@
 package com.fdh.common.core.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 /**
  * layui导航栏model
  */
+@Getter
+@Setter
 public class LayuiNav {
     /**id*/
     private java.lang.Long id;
@@ -18,52 +23,4 @@ public class LayuiNav {
     private java.lang.Boolean spread;
     /**子导航菜单*/
     private List<LayuiNav> children;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public String getHref() {
-        return href;
-    }
-
-    public void setHref(String href) {
-        this.href = href;
-    }
-
-    public Boolean getSpread() {
-        return spread;
-    }
-
-    public void setSpread(Boolean spread) {
-        this.spread = spread;
-    }
-
-    public List<LayuiNav> getChildren() {
-        return children;
-    }
-
-    public void setChildren(List<LayuiNav> children) {
-        this.children = children;
-    }
 }

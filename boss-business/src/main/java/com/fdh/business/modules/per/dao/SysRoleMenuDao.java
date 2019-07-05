@@ -1,5 +1,6 @@
 package com.fdh.business.modules.per.dao;
 
+import com.fdh.business.modules.per.entity.SysMenu;
 import com.fdh.business.modules.per.entity.SysRoleMenu;
 import org.apache.ibatis.annotations.Param;
 
@@ -69,5 +70,5 @@ public interface SysRoleMenuDao {
      * @param roles
      * @return
      */
-    String[] listMenusByRoles(@Param("roles") Set<String> roles);
+    List<SysMenu> listMenusByRoles(@Param("roles") Set<String> roles);
 }
