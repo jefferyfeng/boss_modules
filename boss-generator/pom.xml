@@ -15,16 +15,22 @@
 
   <dependencies>
 
-    <!-- freemarker代码生成使用模板 -->
+    <!--velocity代码生成使用模板 -->
     <dependency>
-      <groupId>org.freemarker</groupId>
-      <artifactId>freemarker</artifactId>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity</artifactId>
     </dependency>
 
     <!-- 通用工具-->
     <dependency>
       <groupId>com.fdh</groupId>
       <artifactId>boss-common</artifactId>
+    </dependency>
+
+    <!-- spring web -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
   </dependencies>

@@ -58,6 +58,11 @@
 
 		<dependency>
 			<groupId>com.fdh</groupId>
+			<artifactId>boss-generator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fdh</groupId>
 			<artifactId>boss-framework</artifactId>
 		</dependency>
 	</dependencies>

@@ -13,7 +13,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @author: fdh
  */
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
-@MapperScan(basePackages = "com.fdh.business.modules.**.dao")
+@MapperScan(basePackages = {"com.fdh.**.dao"})
 public class BossApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
