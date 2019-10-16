@@ -36,6 +36,10 @@
 <!--js逻辑-->
 <script src="../../../static/lib/layui/layui.js" th:src="@{/static/lib/layui/layui.js}"></script>
 <script>
+    //var ctx = [[@{/}]];
+    var ctx = "/";
+    var prefix = ctx + 'tool/gen';
+
     layui.use(["element", "table", "form", "laydate", "okLayer", "okUtils", "okMock"], function () {
         var table = layui.table;
         var form = layui.form;
@@ -49,11 +53,12 @@
 
         var roleTable = table.render({
             elem: "#tableId",
-            url: okMock.api.role.list,
+            url: prefix + '/list',
             limit: 10,
             page: true,
             toolbar: "#toolbarTpl",
             size: "sm",
+            method:'post',
             cols: [
                 [
                     {type: 'checkbox'},
