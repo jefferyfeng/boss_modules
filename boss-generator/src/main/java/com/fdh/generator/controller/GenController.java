@@ -2,6 +2,8 @@ package com.fdh.generator.controller;
 
 import com.fdh.common.annotation.Log;
 import com.fdh.common.core.controller.BaseController;
+import com.fdh.common.core.entity.DataTable;
+import com.fdh.common.core.entity.LayuiData;
 import com.fdh.common.core.entity.page.TableDataInfo;
 import com.fdh.common.core.result.BaseResult;
 import com.fdh.common.enums.BusinessType;
@@ -45,7 +47,7 @@ public class GenController extends BaseController {
      * @param: [modelAndView]
      * @return: org.springframework.web.servlet.ModelAndView
      */
-    //@RequiresPermissions("tool:gen:view")
+    @RequiresPermissions("tool:gen:view")
     @GetMapping
     public ModelAndView toGen(ModelAndView modelAndView) {
         modelAndView.setViewName(prefix + "/gen");
@@ -76,10 +78,10 @@ public class GenController extends BaseController {
      */
     @RequiresPermissions("tool:gen:list")
     @PostMapping("/db/list")
-    public TableDataInfo dataList(GenTable genTable) {
+    public DataTable dataList(GenTable genTable) {
         startPage();
         List<GenTable> list = genTableService.selectDbTableList(genTable);
-        return getDataTable(list);
+        return getLayuiDataTable(list);
     }
 
     /**

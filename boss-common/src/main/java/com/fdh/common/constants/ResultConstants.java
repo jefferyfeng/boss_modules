@@ -6,10 +6,10 @@ package com.fdh.common.constants;
  * @author: fdh
  */
 public enum ResultConstants {
-    /** 失败 */
-    FAILED(0,"失败"),
     /** 成功 */
-    SUCCESS(1,"成功"),
+    SUCCESS(0,"成功"),
+    /** 失败 */
+    FAILED(1,"失败"),
     /** 异常 */
     EXCEPTION(9,"异常");
 

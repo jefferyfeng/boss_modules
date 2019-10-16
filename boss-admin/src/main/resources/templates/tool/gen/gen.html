@@ -21,10 +21,10 @@
     <!--模糊搜索区域-->
     <div class="layui-row">
         <form class="layui-form layui-col-md12 ok-search">
-            <input class="layui-input" placeholder="请输入表名称" autocomplete="off">
-            <input class="layui-input" placeholder="请输入表描述" autocomplete="off">
-            <input class="layui-input" placeholder="创建开始日期" autocomplete="off" id="startTime">
-            <input class="layui-input" placeholder="创建截止日期" autocomplete="off" id="endTime">
+            <input class="layui-input" placeholder="请输入表名称" name="tableName" autocomplete="off" id="tableName" >
+            <input class="layui-input" placeholder="请输入表描述" name="tableComment" autocomplete="off" id="tableComment">
+            <input class="layui-input" placeholder="创建开始日期" name="startTime" autocomplete="off" id="startTime">
+            <input class="layui-input" placeholder="创建截止日期" name="endTime" autocomplete="off" id="endTime">
             <button class="layui-btn" lay-submit="" lay-filter="search">
                 <i class="layui-icon layui-icon-search"></i>
             </button>
@@ -51,14 +51,18 @@
         laydate.render({elem: "#startTime", type: "datetime"});
         laydate.render({elem: "#endTime", type: "datetime"});
 
-        var roleTable = table.render({
+        var genTable = table.render({
             elem: "#tableId",
-            url: prefix + '/list',
+            url: prefix + '/db/list',
             limit: 10,
             page: true,
             toolbar: "#toolbarTpl",
             size: "sm",
             method:'post',
+            request: {
+                pageName: 'pageNum',
+                limitName: 'pageSize'
+            },
             cols: [
                 [
                     {type: 'checkbox'},
@@ -67,6 +71,7 @@
                     {field: 'tableName', title: '表名称'},
                     {field: 'tableComment', title: '表描述'},
                     {field: 'createTime', title: '创建时间'},
+                    {field: 'updateTime', title: '更新时间'},
                     {title: '操作', width: 200, align: 'center', templet: '#operationTpl'}
                 ]
             ],
@@ -75,10 +80,15 @@
             }
         });
 
-        form.on("submit(search)", function () {
-            roleTable.reload({
+        form.on("submit(search)", function (data) {
+            data.field.params = {
+                startTime : data.field.startTime,
+                endTime : data.field.endTime
+            }
+            console.log(data);
+            genTable.reload({
                 where: data.field,
-                page: {curr: 1}
+                page: {pageNum: 1}
             });
             return false;
         });

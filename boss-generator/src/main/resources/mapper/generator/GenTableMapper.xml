@@ -69,12 +69,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select table_name, table_comment, create_time, update_time from information_schema.tables
 		where table_schema = (select database())
 		AND table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%'
-		AND table_name NOT IN (select table_name from gen_table)
+		AND table_name NOT IN (select table_name from sys_gen_table)
 		<if test="tableName != null and tableName != ''">
 			AND table_name like concat('%', #{tableName}, '%')
 		</if>
 		<if test="tableComment != null and tableComment != ''">
 			AND table_comment like concat('%', #{tableComment}, '%')
+		</if>
+		<if test="params != null">
+			<if test="params.containsKey('startTime') and params.startTime != null and params.startTime !=''">
+				AND create_time &gt;= #{params.startTime}
+			</if>
+			<if test="params.containsKey('endTime') and params.endTime != null and params.endTime !=''">
+				AND create_time &lt;= #{params.endTime}
+			</if>
 		</if>
 	</select>
 	

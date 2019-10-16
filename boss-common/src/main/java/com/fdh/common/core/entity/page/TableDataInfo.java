@@ -1,5 +1,7 @@
 package com.fdh.common.core.entity.page;
 
+import com.fdh.common.core.entity.DataTable;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -8,8 +10,7 @@ import java.util.List;
  * 
  * @author ruoyi
  */
-public class TableDataInfo implements Serializable
-{
+public class TableDataInfo extends DataTable implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /** 总记录数 */

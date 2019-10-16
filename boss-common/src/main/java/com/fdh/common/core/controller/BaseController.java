@@ -1,6 +1,7 @@
 package com.fdh.common.core.controller;
 
 import com.fdh.common.constants.ResultConstants;
+import com.fdh.common.core.entity.LayuiData;
 import com.fdh.common.core.entity.page.PageBean;
 import com.fdh.common.core.entity.page.TableDataInfo;
 import com.fdh.common.core.entity.page.TableSupport;
@@ -79,6 +80,19 @@ public class BaseController {
         rspData.setRows(list);
         rspData.setTotal(new PageInfo(list).getTotal());
         return rspData;
+    }
+
+    /**
+     * layui响应请求分页数据
+     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    protected LayuiData getLayuiDataTable(List<?> list){
+        LayuiData layuiData = new LayuiData();
+        layuiData.setCode(ResultConstants.SUCCESS.getCode());
+        layuiData.setData(list);
+        layuiData.setMsg(ResultConstants.SUCCESS.getMsg());
+        layuiData.setCount(new PageInfo(list).getTotal());
+        return layuiData;
     }
 
     /**

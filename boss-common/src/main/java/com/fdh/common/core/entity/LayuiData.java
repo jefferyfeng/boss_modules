@@ -10,9 +10,9 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class LayuiData<T> {
+public class LayuiData<T> extends DataTable {
     private Integer code;
     private String msg;
-    private Integer count;
+    private Long count;
     private T data;
 }
